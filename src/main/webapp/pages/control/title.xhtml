@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:view>
+<div style="box-shadow: 0px 0px 10px 0px #666;margin: auto">
+	<table width="100%" cellpadding="0" cellspacing="0px">
+		<tr>
+			<td>
+			<h:form id="form">
+			<p:growl id="messages" />
+			<p:commandButton id="showDialogButton" value="Salir" onclick="confirmation.show()" type="button"/> 
+				<p>
+<!-- 				<h:outputText id="txt_count" value="#{titleController.hoy}"/> -->
+<!-- 				<p:poll interval="1" listener="#{titleController.hora}" update="txt_count" />   -->
+				<br/>
+				 <script type="text/javascript"> var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); var f=new Date(); document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear()); </script>
+				 </p>
+			<p:confirmDialog id="confirmDialog" message="Seguro/a de terminar la sesion?"  
+		                header="Salir del sistema" severity="alert" widgetVar="confirmation">  
+		                  
+		        <p:commandButton id="confirm" value="Si Seguro" update="messages" oncomplete="confirmation.hide()"  
+		                    actionListener="#{titleController.desconectarse}" />  
+		        <p:commandButton id="decline" value="Siempre No" onclick="confirmation.hide()" type="button" />   
+		                  
+		    </p:confirmDialog> 
+			</h:form>
+			</td>
+			<td align="center">
+				<div style="text-align: center;">
+					<h2 style="color: #4499ff"><h:outputText value="#{titleController.titulo}" /></h2>
+					<h2 style="color: #4499ff"><h:outputText value="#{titleController.stitulo}" /></h2>
+				</div>
+			</td>
+			<td width="150px" align="right">
+				<h:graphicImage url="#{titleController.userImg}" style="border-radius:50%;height : 50px;" /><br/>
+				#{titleController.userName}
+			</td>
+		</tr>
+	</table>
+</div>
+	</f:view>
+
+</ui:composition>

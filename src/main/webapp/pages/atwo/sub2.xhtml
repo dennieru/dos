@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/plantillaT.xhtml">
+
+	<ui:define name="top">
+		<ui:include src="/pages/control/title.xhtml" />
+	</ui:define>
+	<ui:define name="left">
+		<ui:include src="/pages/control/menu.xhtml" />
+	</ui:define>
+	<ui:define name="bottom">
+		<ui:include src="/pages/control/foot.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+	<h:form id="form1">
+	<p:menubar> 
+	<p:menuitem value="Agregar	" url="#" icon="ui-icon-circle-plus" />
+	<p:menuitem value=" " url="#"/>
+	<p:menuitem value="Editar	" url="#" icon="ui-icon-pencil" /> 
+	<p:menuitem value="Guardar	" url="#" icon="ui-icon-check" /> 
+	<p:menuitem value="Eliminar" url="#" icon="ui-icon-trash" /> 
+	</p:menubar>
+
+		<f:view>
+
+	<p:dataGrid var="car" value="#{sub2Controller.cars}" columns="3"
+		rows="12" paginator="true"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="9,12,21">
+		<f:facet name="header">  
+            LISTA DE AUTOS  
+        </f:facet> 
+
+        <p:panel header="#{car.model}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                <p:graphicImage value="/resources/img/cars/#{car.manufacturer}.jpg"/> 
+
+                <h:outputText value="#{car.year}" />
+
+                <p:commandLink update=":form1:carDetail" oncomplete="carDialog.show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" /> 
+                    <f:setPropertyActionListener value="#{car}" target="#{sub2Controller.selectedCar}" />
+                </p:commandLink>
+            </h:panelGrid>
+        </p:panel>
+
+	</p:dataGrid>
+	
+	<p:dialog header="Car Detail" widgetVar="carDialog" modal="true">
+		<p:outputPanel id="carDetail" style="text-align:center;" layout="block">
+		
+			<p:graphicImage value="/resources/img/cars/#{sub2Controller.selectedCar.manufacturer}.jpg"/>
+			
+			<h:panelGrid  columns="2" cellpadding="5">
+				<h:outputLabel for="modelNo" value="Model No: " />
+				<h:outputText id="modelNo" value="#{sub2Controller.selectedCar.model}" />
+				
+				<h:outputLabel for="year" value="Year: " />
+				<h:outputText id="year" value="#{sub2Controller.selectedCar.year}" />
+				
+				<h:outputLabel for="color" value="Color: " />
+				<h:outputText id="color" value="#{sub2Controller.selectedCar.color}" style="color:#{sub2Controller.selectedCar.color}"/>
+			</h:panelGrid>
+		</p:outputPanel>
+	</p:dialog>
+
+		</f:view>
+	</h:form>
+	</ui:define>
+
+
+</ui:composition>

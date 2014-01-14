@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Sitio Java</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="css/table.css" />
+</h:head>
+<h:body>
+
+	<table id="tabla" cellspacing="0px" style="align: center;">
+		<tr>
+			<td id="top" colspan="2"><ui:insert name="top">top</ui:insert></td>
+		</tr>
+		<tr>
+			<td id="left"><ui:insert name="left">left</ui:insert></td>
+			<td id="content"><ui:insert name="content">content</ui:insert></td>
+		</tr>
+		<tr>
+			<td id="bottom" colspan="2" align="center"><ui:insert name="bottom">Bottom</ui:insert></td>
+		</tr>
+	</table>
+
+</h:body>
+</html>

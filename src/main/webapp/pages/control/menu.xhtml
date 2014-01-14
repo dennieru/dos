@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:view>
+		<h:form>
+
+			<p:panelMenu style="width:200px">
+				<p:submenu label="Productos">
+
+					<p:menuitem value="Pedido" process="@this" action="/pages/atwo/claves?faces-redirect=true"
+						actionListener="#{menuController.eventoMenu}">
+						<f:param name="pagina" value="/pages/atwo/claves.xhtml"></f:param>
+					</p:menuitem>
+					<p:menuitem value="Productos" process="@this" action="/pages/atwo/sub2?faces-redirect=true"
+						actionListener="#{menuController.eventoMenu}">
+						<f:param name="pagina" value="/pages/atwo/sub2.xhtml"></f:param>
+					</p:menuitem>
+				</p:submenu>
+				<p:separator />
+				<p:submenu label="Personal">
+					<p:menuitem value="Administrar Usuarios" process="@this" action="/pages/pagina2?faces-redirect=true"
+						actionListener="#{menuController.eventoMenu}">
+						<f:param name="pagina" value="/pages/pagina2.xhtml"></f:param>
+					</p:menuitem>
+				</p:submenu>
+				<p:separator />
+				<p:submenu label="Reportes">
+					<p:menuitem value="Categorias" process="@this" action="/pages/test/categoriaPuesto?faces-redirect=true"
+						actionListener="#{menuController.eventoMenu}">
+						<f:param name="pagina" value="/pages/test/categoriaPuesto.xhtml"></f:param>
+					</p:menuitem>
+					<p:menuitem value="Claves" process="@this" action="/pages/test/claves?faces-redirect=true"
+						actionListener="#{menuController.eventoMenu}">
+						<f:param name="pagina" value="/pages/test/claves.xhtml"></f:param>
+					</p:menuitem>
+
+				</p:submenu>
+				<p:separator />
+				<p:submenu label="Cartillas">
+					<p:menuitem value="Correo">
+					</p:menuitem>
+					<p:menuitem value="Roles">
+					</p:menuitem>
+					<p:menuitem value="Log">
+					</p:menuitem>
+				</p:submenu>
+				<p:separator />
+				<p:submenu label="Resoluciones">
+					<p:menuitem value="Correo">
+					</p:menuitem>
+					<p:menuitem value="Roles">
+					</p:menuitem>
+					<p:menuitem value="Log">
+					</p:menuitem>
+				</p:submenu>
+				<p:separator />
+				<p:submenu label="Materiales">
+					<p:menuitem value="Almacen">
+					</p:menuitem>
+					<p:menuitem value="Compras">
+					</p:menuitem>
+					<p:menuitem value="Auditoria">
+					</p:menuitem>
+				</p:submenu>
+				<p:separator />
+			</p:panelMenu>
+
+		</h:form>
+
+	</f:view>
+
+</ui:composition>

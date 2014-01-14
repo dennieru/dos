@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/plantillaT.xhtml">
+
+	<ui:define name="top">
+		<ui:include src="/pages/control/title.xhtml" />
+	</ui:define>
+	<ui:define name="left">
+		<ui:include src="/pages/control/menu.xhtml" />
+	</ui:define>
+	<ui:define name="bottom">
+		<ui:include src="/pages/control/foot.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+	<p:menubar> 
+	</p:menubar>
+
+		<div align="center">Pagina 111111111</div>
+
+		<f:view>
+			<h:form>
+
+				<p:panel header="Masks">
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Date: " />
+						<p:inputMask value="#{primeTestBean.date}" mask="99/99/9999" />
+
+						<h:outputText value="Phone: " />
+						<p:inputMask value="#{primeTestBean.phone}" mask="(999) 999-9999" />
+
+						<h:outputText value="Phone with Ext: " />
+						<p:inputMask value="#{primeTestBean.phoneExt}"
+							mask="(999) 999-9999? x99999" />
+
+						<h:outputText value="taxId: " />
+						<p:inputMask value="#{primeTestBean.taxId}" mask="99-9999999" />
+
+						<h:outputText value="SSN: " />
+						<p:inputMask value="#{primeTestBean.ssn}" mask="999-99-9999" />
+
+						<h:outputText value="Product Key: " />
+						<p:inputMask value="#{primeTestBean.productKey}"
+							mask="a*-999-a999" />
+
+						<p:commandButton value="Reset" type="reset" />
+						<p:commandButton value="Submit" update="display"
+							oncomplete="dialog.show()" />
+
+					</h:panelGrid>
+				</p:panel>
+
+				<p:dialog widgetVar="dialog" modal="true">
+					<h:panelGrid id="display" columns="2" cellpadding="5">
+
+						<h:outputText value="Date: " />
+						<h:outputText value="#{primeTestBean.date}" />
+
+						<h:outputText value="Phone: " />
+						<h:outputText value="#{primeTestBean.phone}" />
+
+						<h:outputText value="Phone with Ext: " />
+						<h:outputText value="#{primeTestBean.phoneExt}" />
+
+						<h:outputText value="taxId: " />
+						<h:outputText value="#{primeTestBean.taxId}" />
+
+						<h:outputText value="SSN: " />
+						<h:outputText value="#{primeTestBean.ssn}" />
+
+						<h:outputText value="Product Key: " />
+						<h:outputText value="#{primeTestBean.productKey}" />
+
+					</h:panelGrid>
+				</p:dialog>
+				<h:panelGrid columns="1" cellpadding="5">  
+				    <p:commandButton id="basic" value="Basic" onclick="PF('dlg1').show();" type="button" />  
+				  
+				    <p:commandButton id="modalDialogButton" value="Modal" onclick="PF('dlg2').show();" type="button"/>  
+				  
+				    <p:commandButton id="effectsDialogButton" value="Effects" onclick="PF('dlg3').show();" type="button" />  
+				</h:panelGrid>  
+				  
+				<p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1">  
+				    <h:outputText value="Resistance to PrimeFaces is futile!" />  
+				</p:dialog>  
+				  
+				<p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">  
+				    <h:outputText value="This is a Modal Dialog." />  
+				</p:dialog>  
+				  
+				<p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">  
+				    <h:outputText value="This dialog has nice effects." />  
+				</p:dialog>  
+
+			</h:form>
+		</f:view>
+
+	</ui:define>
+
+
+</ui:composition>
