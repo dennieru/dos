@@ -6,8 +6,6 @@
 
 package libraryprotctive;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -17,11 +15,11 @@ import java.util.TreeSet;
  */
 public class LibraryProtctive {
 
-    /**
-     * @param args the command line arguments
-     */
     
-     public static <T> Set<T> union(Set<T> setA, Set<T> setB) {
+  /*
+   *
+    */
+  public static <T> Set<T> union(Set<T> setA, Set<T> setB) {
     Set<T> tmp = new TreeSet<T>(setA);
     tmp.addAll(setB);
     return tmp;
@@ -58,7 +56,16 @@ public class LibraryProtctive {
     return setA.containsAll(setB);
   }
   
-    public static void main(String[] args) {
+  public static <T> Set<T> complement(Set<T> setA, Set<T> setB) {
+      
+      if(isSubset(setA, setB)){
+            Set<T> tmp;
+            tmp=difference(setB, setA);
+            return tmp;
+      }else{return null;}
+  }
+  
+   public static void main(String[] args) {
         // set up a test for AverageImpl
         TreeSet<Character> set1 = new TreeSet<Character>();
     TreeSet<Character> set2 = new TreeSet<Character>();
@@ -72,7 +79,7 @@ public class LibraryProtctive {
     set2.add('D');
     set2.add('E');
     set2.add('F');
-    set2.add('3');
+    set2.add('G');
 
     System.out.println("set1: " + set1);
     System.out.println("set2: " + set2);
@@ -87,10 +94,11 @@ public class LibraryProtctive {
     set3.remove('D');
     System.out.println("set3: " + set3);
 
-    System.out.println("Is set1 a subset of set2? " + isSubset(set1, set3));
-    System.out.println("Is set1 a superset of set2? " + isSuperset(set1, set3));
+    System.out.println("Is set1 a subset of set3? " + isSubset(set1, set3));
+    System.out.println("Is set1 a superset of set3? " + isSuperset(set1, set3));
     System.out.println("Is set3 a subset of set1? " + isSubset(set3, set1));
     System.out.println("Is set3 a superset of set1? " + isSuperset(set3, set1));
+    System.out.println("set3 complement's " + complement(set3, set1));
 }
     
 }
