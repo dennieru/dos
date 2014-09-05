@@ -56,11 +56,11 @@ public class LibraryProtctive {
     return setA.containsAll(setB);
   }
   
-  public static <T> Set<T> complement(Set<T> setA, Set<T> setB) {
+  public static <T> Set<T> complement(Set<T> setA, Set<T> setU) {
       
-      if(isSubset(setA, setB)){
+      if(isSubset(setA, setU)){
             Set<T> tmp;
-            tmp=difference(setB, setA);
+            tmp=difference(setU, setA);
             return tmp;
       }else{return null;}
   }
